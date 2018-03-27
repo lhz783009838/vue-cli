@@ -54,12 +54,17 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     }
   },
   plugins: [
+    // definePlugin 接收字符串插入到代码当中, 所以你需要的话可以写上 JS 的字符串
+    // 此处，插入适当的环境
+    // https://webpack.js.org/plugins/define-plugin/
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
     new webpack.NoEmitOnErrorsPlugin(),
+    // https://github.com/ampedandwired/html-webpack-plugin
+    // 将 index.html 作为入口，注入 html 代码后生成 index.html文件
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',

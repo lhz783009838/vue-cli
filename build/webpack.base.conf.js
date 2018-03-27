@@ -1,13 +1,24 @@
 'use strict'
+// node自带的文件路径工具
 const path = require('path')
+// 工具函数集合
 const utils = require('./utils')
+// 配置文件
 const config = require('../config')
+// 工具函数集合
 const vueLoaderConfig = require('./vue-loader.conf')
 
+/**
+ * 获得绝对路径
+ * @method resolve
+ * @param  {String} dir 相对于本文件的路径
+ * @return {String}     绝对路径
+ */
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
+// es6 -> 箭头函数返回一个对象时，最外层必须用括号包住
 const createLintingRule = () => ({
   test: /\.(js|vue)$/,
   loader: 'eslint-loader',
@@ -25,20 +36,28 @@ module.exports = {
     app: './src/main.js'
   },
   output: {
+    // 编译输出的静态资源根路径
     path: config.build.assetsRoot,
+    // 编译输出的文件名
     filename: '[name].js',
+    // 正式发布环境下编译输出的上线路径的根路径
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
   resolve: {
+    // 自动补全的扩展名
     extensions: ['.js', '.vue', '.json'],
+    // 路径别名
     alias: {
+      // 例如 import Vue from 'vue'，会自动到 'vue/dist/vue.common.js'中寻找
       'vue$': 'vue/dist/vue.esm.js',
+      // '@' 符号表示 /src 目录下
       '@': resolve('src'),
     }
   },
   module: {
+    // 审查 js 和 vue 文件
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),
       {

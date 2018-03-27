@@ -56,8 +56,15 @@ my-project
   static --静态资源（一般放图片类资源）
   .babelrc --babel编译参数
   .editorconfig --代码格式
-  .gitignore
+  .gitignore --git忽略文件
   .postcssrc.js --转换css的工具
   index.html --主页
   package.json --项目基本信息
   README.md --项目说明
+`````
+###依赖引入
+````bash
+# vuex: vuex是一个专门为vue.js设计的集中式状态管理架构。
+  npm install vuex --save
+  使用: import Vuex from 'vuex'
+````

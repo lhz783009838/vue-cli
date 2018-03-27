@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <div id="content"></div>
+    <router-link to="/toRouteTest">跳到路由测试</router-link>
+    <router-link to="/toVuexTest">Vuex测试</router-link>
+    <router-view id="iframe"></router-view>
   </div>
 </template>
 
@@ -19,5 +21,15 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#content {
+  width: 80%;
+  height: 80%;
+  background-color: aliceblue;
+}
+#iframe {
+  width: 80%;
+  height: 80%;
+  background-color: aliceblue;
 }
 </style>
